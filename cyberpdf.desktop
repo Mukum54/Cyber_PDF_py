@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=CYBER PDF
+GenericName=PDF Operations Suite
+Comment=Professional PDF operations suite for Linux
+Exec=cyberpdf
+Icon=cyberpdf
+Terminal=false
+Categories=Office;Utility;
+Keywords=pdf;converter;merge;split;encrypt;watermark;
+StartupNotify=true
+StartupWMClass=CYBER PDF

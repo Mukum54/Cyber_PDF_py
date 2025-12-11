@@ -1,0 +1,95 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cyber-pdf"
+version = "1.0.0"
+description = "Professional PDF operations suite for Linux"
+authors = [
+    {name = "CYBER PDF Team", email = "info@cyberpdf.org"}
+]
+license = {text = "GPL-3.0-or-later"}
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["pdf", "converter", "linux", "desktop", "qt"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "PySide6>=6.6.0",
+    "PyMuPDF>=1.23.0",
+    "pypdf>=3.17.0",
+    "python-docx>=1.1.0",
+    "Pillow>=10.1.0",
+    "pycryptodome>=3.19.0",
+    "click>=8.1.0",
+    "PyYAML>=6.0.1",
+]
+
+[project.optional-dependencies]
+ocr = [
+    "pytesseract>=0.3.10",
+    "opencv-python>=4.8.0",
+]
+gpu = [
+    "pyopencl>=2023.1",
+]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-qt>=4.2.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.11.0",
+    "ruff>=0.1.6",
+    "mypy>=1.7.0",
+]
+all = [
+    "cyber-pdf[ocr,gpu,dev]",
+]
+
+[project.scripts]
+cyberpdf = "cyberpdf_core.main:main"
+cyberpdf-cli = "cli.cyberpdf_cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/cyberpdf/cyber-pdf"
+Documentation = "https://cyberpdf.readthedocs.io"
+Repository = "https://github.com/cyberpdf/cyber-pdf"
+"Bug Tracker" = "https://github.com/cyberpdf/cyber-pdf/issues"
+
+[tool.setuptools]
+packages = ["cyberpdf_core", "ui", "cli"]
+
+[tool.black]
+line-length = 100
+target-version = ['py310', 'py311', 'py312']
+include = '\.pyi?$'
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "PT"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --cov=cyberpdf_core --cov=ui --cov=cli --cov-report=html --cov-report=term"
