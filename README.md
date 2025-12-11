@@ -46,43 +46,44 @@
 
 ## 📦 Installation
 
-### AppImage (Recommended)
-```bash
-# Download the latest AppImage
-wget https://github.com/cyberpdf/cyber-pdf/releases/latest/download/CyberPDF-x86_64.AppImage
+### Method 1: From GitHub Release (Recommended)
 
-# Make it executable
-chmod +x CyberPDF-x86_64.AppImage
+Download and install the pre-built package:
+
+```bash
+# Download the wheel package
+wget https://github.com/Mukum54/Cyber_PDF_py/releases/download/v1.0.0/cyber_pdf-1.0.0-py3-none-any.whl
+
+# Install
+pip install cyber_pdf-1.0.0-py3-none-any.whl
 
 # Run
-./CyberPDF-x86_64.AppImage
+cyberpdf
 ```
 
-### Flatpak
-```bash
-flatpak install flathub org.cyberpdf.CyberPDF
-flatpak run org.cyberpdf.CyberPDF
-```
+### Method 2: Quick Install Script
 
-### Debian/Ubuntu (DEB)
-```bash
-wget https://github.com/cyberpdf/cyber-pdf/releases/latest/download/cyber-pdf_1.0.0_amd64.deb
-sudo dpkg -i cyber-pdf_1.0.0_amd64.deb
-sudo apt-get install -f  # Install dependencies
-```
+Clone and run the installation script:
 
-### Arch Linux (AUR)
-```bash
-yay -S cyber-pdf
-# or
-yay -S cyber-pdf-git
-```
-
-### From Source
 ```bash
 # Clone repository
-git clone https://github.com/cyberpdf/cyber-pdf.git
-cd cyber-pdf
+git clone https://github.com/Mukum54/Cyber_PDF_py.git
+cd Cyber_PDF_py
+
+# Run installation script
+./install.sh
+
+# Activate virtual environment and run
+source venv/bin/activate
+python -m cyberpdf_core.main
+```
+
+### Method 3: Install from Source
+
+```bash
+# Clone repository
+git clone https://github.com/Mukum54/Cyber_PDF_py.git
+cd Cyber_PDF_py
 
 # Create virtual environment
 python3 -m venv venv
@@ -94,6 +95,15 @@ pip install -r requirements.txt
 # Run
 python -m cyberpdf_core.main
 ```
+
+### Method 4: Direct pip Install from GitHub
+
+```bash
+pip install git+https://github.com/Mukum54/Cyber_PDF_py.git
+cyberpdf
+```
+
+> **Note**: See [INSTALL.md](INSTALL.md) for detailed installation instructions, system requirements, and troubleshooting.
 
 ---
 
